@@ -15,10 +15,9 @@ define(function (require, exports, module) {
 
 	// Modifica o Ractive para manter os métodos antigos do Marionette
 	Ractive.prototype.onconstruct = function(options) {
-		this.onconfig = this.onconfig || this.initialize;
-		this.oninit = this.oninit || this.onBeforeRender;
+		this.oninit = this.oninit || this.initialize;
 		this.onrender = this.onrender || this.onRender;
-		this.oncomplete = this.oncomplete || this.onAfterRender;
+		this.oncomplete = this.oncomplete || this.onAfterRender || this.onShow;
 		this.onteardown = this.onteardown || this.onClose;
 	};
 
