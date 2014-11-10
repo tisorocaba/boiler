@@ -5,13 +5,14 @@
   "volo": {
     "baseDir": "libs",
     "dependencies": {
-      "../assets/css/bootstrap" : "github:components/bootstrap/~3#css/bootstrap.css",
-      "../assets/fonts"         : "github:components/bootstrap/~3#fonts",
-      "jquery"                  : "github:components/jquery/~1",
-      "underscore"              : "github:jashkenas/underscore/~1",
-      "backbone"                : "github:jashkenas/backbone/~1",
-      "bootstrap"               : "github:components/bootstrap/~3#js/bootstrap.js",
-      "backbone.queryparams"    : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js"
+      "../assets/css/bootstrap"   : "github:components/bootstrap/~3#css/bootstrap.css",
+      "../assets/fonts"           : "github:components/bootstrap/~3#fonts",
+      "jquery"                    : "github:components/jquery/~1",
+      "underscore"                : "github:jashkenas/underscore/~1",
+      "backbone"                  : "github:jashkenas/backbone/~1",
+      "bootstrap"                 : "github:components/bootstrap/~3#js/bootstrap.js",
+      "backbone.queryparams"      : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js",
+      "ractive-adaptors-backbone" : "github:ractivejs/ractive-adaptors-backbone"
     }
   },
   "scripts": {
