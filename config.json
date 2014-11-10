@@ -1,0 +1,14 @@
+{
+	"routes": {
+		"*404" : "application#pagina404",
+		""     : "application#home"
+	},
+
+	"regions": {
+		"menu" : "#menu",
+		"main" : "#main"
+	},
+
+	"CDN_URL": "http://servicos.sorocaba.sp.gov.br/cdn",
+	"ENV": "TESTE"
+}
