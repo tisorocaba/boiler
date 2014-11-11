@@ -3,3 +3,5 @@ libs/*.*
 !libs/boiler.js
 temp
 dist
+assets/css/bootstrap.css
+assets/fonts/
