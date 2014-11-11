@@ -66,7 +66,14 @@ define(function (require, exports, module) {
 		var router = new Backbone.Router({});
 
 		_(routes).each(function(callback, route) {
-			router.route(route, callback);
+			if(route.indexOf('!') !== -1) {
+				router.route(route.substring(1), function() {
+					callback.apply(this, arguments);
+					window.history.back();
+				});
+			} else {
+				router.route(route, callback);
+			}
 		});
 
 		Backbone.history.start();
