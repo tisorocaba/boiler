@@ -14,32 +14,6 @@ define(function (require, exports, module) {
 		_ = require('underscore'),
 		Backbone = require('backbone');
 
-	// Stolen from Backbone
-	var undelegateEvents = function() {
-		$(document).off('.delegateEvents' + this._guid);
-	};
-
-	// Stolen from Backbone
-	var delegateEvents = function(events) {
-		var delegateEventSplitter = /^(\S+)\s*(.*)$/;
-
-		if (!(events || (events = _.result(this, 'events')))) return this;
-
-		undelegateEvents();
-
-		for (var key in events) {
-			var method = events[key];
-			if (!_.isFunction(method)) method = this[events[key]];
-			if (!method) continue;
-
-			var match = key.match(delegateEventSplitter);
-			var eventName = match[1], selector = match[2];
-			method = _.bind(method, this);
-			eventName += '.delegateEvents' + this._guid;
-			$(document).on(eventName, selector, method);
-		}
-	};
-
 	// Modifica o Ractive para manter os métodos antigos do Marionette
 	Ractive.prototype.onconstruct = function(options) {
 		this.oninit = this.oninit || this.initialize;
@@ -97,17 +71,45 @@ define(function (require, exports, module) {
 		var router = new Backbone.Router({});
 
 		_(routes).each(function(callback, route) {
-			if(route.indexOf('!') !== -1) {
-				router.route(route.substring(1), function() {
-					callback.apply(this, arguments);
-					window.history.back();
-				});
-			} else {
-				router.route(route, callback);
-			}
+			router.route(route, callback);
 		});
 
 		Backbone.history.start();
+	}
+
+	// Implementa o método Backbone.history.previous()
+	Backbone.history.previous = function() {
+		if(document.referrer === '') {
+			Backbone.history.navigate('/');
+		} else {
+			window.history.back();
+		}
+	};
+
+	// Stolen from Backbone
+	function undelegateEvents() {
+		$(document).off('.delegateEvents' + this._guid);
+	}
+
+	// Stolen from Backbone
+	function delegateEvents(events) {
+		var delegateEventSplitter = /^(\S+)\s*(.*)$/;
+
+		if (!(events || (events = _.result(this, 'events')))) return this;
+
+		undelegateEvents();
+
+		for (var key in events) {
+			var method = events[key];
+			if (!_.isFunction(method)) method = this[events[key]];
+			if (!method) continue;
+
+			var match = key.match(delegateEventSplitter);
+			var eventName = match[1], selector = match[2];
+			method = _.bind(method, this);
+			eventName += '.delegateEvents' + this._guid;
+			$(document).on(eventName, selector, method);
+		}
 	}
 
 	module.exports = {
