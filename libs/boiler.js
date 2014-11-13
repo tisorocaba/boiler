@@ -66,6 +66,11 @@ define(function (require, exports, module) {
 		if(typeof(view) === 'function') {
 			view = new view(options);
 		}
+
+		if(this instanceof Ractive) {
+			view.parent = this;
+		}
+
 		view.render(region);
 
 		return view;
