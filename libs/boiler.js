@@ -26,6 +26,9 @@ define(function (require, exports, module) {
 		}.bind(this), 100);
 	};
 
+	// Insere o método showView nas views Ractive
+	Ractive.prototype.showView = showView;
+
 	// Boiler View
 	var View = Ractive;
 
@@ -64,6 +67,8 @@ define(function (require, exports, module) {
 			view = new view(options);
 		}
 		view.render(region);
+
+		return view;
 	}
 
 	// Boiler registerRoutes
