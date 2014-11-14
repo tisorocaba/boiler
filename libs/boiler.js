@@ -12,7 +12,9 @@ define(function (require, exports, module) {
 	var Ractive = require('ractive'),
 		$ = require('jquery'),
 		_ = require('underscore'),
-		Backbone = require('backbone');
+		Backbone = require('backbone'),
+		loading,
+		loadingView;
 
 	// Modifica o Ractive para manter os métodos antigos do Marionette
 	Ractive.prototype.onconstruct = function(options) {
@@ -122,10 +124,48 @@ define(function (require, exports, module) {
 		}
 	}
 
+	// Configura o template a ser renderizado no loading das requisições ajax
+	function setLoadingTemplate(template) {
+		$(document).ajaxStart(function() {
+			loading = setTimeout(function() {
+				loadingView = new Ractive({
+					el: 'body',
+					template: template,
+					append: true
+				});
+			}, 1000);
+		});
+
+		$(document).ajaxComplete(function() {
+			clearTimeout(loading);
+			try {
+				loadingView.teardown();
+			} catch(err) {}
+		});
+	}
+
+	// Configura o template a ser renderizado no erro das requisições ajax
+	function setErrorTemplate(template) {
+		$(document).ajaxError(function(event, error) {
+			clearTimeout(loading);
+			new Ractive({
+				el: 'body',
+				template: template,
+				append: true,
+				data: error,
+				close: function() {
+					this.teardown();
+				}
+			});
+		});
+	}
+
 	module.exports = {
 		View: View,
 		Controller: Controller,
 		showView: showView,
-		registerRoutes: registerRoutes
+		registerRoutes: registerRoutes,
+		setLoadingTemplate: setLoadingTemplate,
+		setErrorTemplate: setErrorTemplate
 	};
 });
