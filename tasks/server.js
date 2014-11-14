@@ -6,8 +6,10 @@ gulp.task('server', function() {
 		server: {
 			baseDir: './'
 		},
-		files: ['temp/*.js', 'assets/**', 'index.html'],
+		files: ['temp/{application,libs}.js', 'assets/**', 'index.html'],
 		notify: false,
-		ghostMode: false
+		ghostMode: false,
+		logPrefix: 'Boiler',
+		online: false
 	});
 });
