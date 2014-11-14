@@ -18,7 +18,7 @@ gulp.task('libs', function() {
 				}
 			});
 
-			bundler.require('./node_modules/ractive/ractive-legacy.runtime.js', {expose: 'ractive'});
+			bundler.require('./node_modules/ractive/ractive-legacy.js', {expose: 'ractive'});
 
 			file.contents = bundler.bundle();
 		}))
