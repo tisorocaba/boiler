@@ -89,6 +89,9 @@ define(function (require, exports, module) {
 		Backbone.history.start();
 	}
 
+	// Insere o método showView no Backbone Router
+	Backbone.Router.prototype.showView = showView;
+
 	// Implementa o método Backbone.history.previous()
 	Backbone.history.previous = function() {
 		if(document.referrer === '') {
