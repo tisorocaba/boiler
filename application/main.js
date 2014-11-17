@@ -8,11 +8,11 @@ var	Boiler = require('boiler'),
 // Injeta o jquery.
 Backbone.$ = $;
 
-// registra os helpers
-require('helpers');
-
 // registra os componentes
 require('components');
+
+// registra os helpers
+require('helpers');
 
 // registra os partials
 require('partials');
