@@ -50,5 +50,6 @@ gulp.task('application', function() {
 			file.contents = bundler.bundle();
 		}))
 		.pipe(plugins.rename('application.js'))
+		.pipe(plugins.wait(500))
 		.pipe(gulp.dest('temp'));
 });
