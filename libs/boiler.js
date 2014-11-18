@@ -16,16 +16,37 @@ define(function (require, exports, module) {
 		loading,
 		loadingView;
 
-	// Modifica o Ractive para manter os métodos antigos do Marionette
-	Ractive.prototype.onconstruct = function(options) {
-		this.oninit = this.oninit || this.initialize;
-		this.onrender = this.onrender || this.onRender;
-		this.oncomplete = this.oncomplete || this.onAfterRender || this.onShow;
-		this.onteardown = this.onteardown || this.onClose;
+	// Cria o alias initialize
+	Ractive.prototype.onconstruct = function() {
+		if(this.initialize) {
+			this.initialize.apply(this, arguments);
+		}
 
 		setTimeout(function() {
 			delegateEvents.apply(this, arguments);
 		}.bind(this), 100);
+	};
+
+	// Cria o alias onRender
+	Ractive.prototype.onrender = function() {
+		if(this.onRender) {
+			this.onRender.apply(this, arguments);
+		}
+	};
+
+	// Cria o alias onShow
+	Ractive.prototype.oncomplete = function() {
+		if(this.onShow) {
+			this.onShow.apply(this, arguments);
+		}
+	};
+
+	// Cria o alias onClose
+	Ractive.prototype.onteardown = function() {
+		if(this.onClose) {
+			this.onClose.apply(this, arguments);
+			undelegateEvents.apply(this, arguments);
+		}
 	};
 
 	// Insere o método showView nas views Ractive
