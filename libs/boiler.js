@@ -14,7 +14,8 @@ define(function (require, exports, module) {
 		_ = require('underscore'),
 		Backbone = require('backbone'),
 		loading,
-		loadingView;
+		loadingView,
+		lastRoute;
 
 	// Cria o alias initialize
 	Ractive.prototype.onconstruct = function() {
@@ -104,7 +105,13 @@ define(function (require, exports, module) {
 		var router = new Backbone.Router({});
 
 		_(routes).each(function(callback, route) {
-			router.route(route, callback);
+			router.route(route, route, callback);
+		});
+
+		router.on('route', function(route) {
+			if(!route.match(['login|logout'])) {
+				lastRoute = route;
+			}
 		});
 
 		Backbone.history.start();
@@ -118,7 +125,7 @@ define(function (require, exports, module) {
 		if(document.referrer === '') {
 			Backbone.history.navigate('/');
 		} else {
-			window.history.back();
+			Backbone.history.navigate(lastRoute, true);
 		}
 	};
 

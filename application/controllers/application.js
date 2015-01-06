@@ -1,7 +1,7 @@
 var Boiler = require('boiler');
 
 module.exports = Boiler.Controller.extend({
-	home: function(id, nome, params) {
+	home: function() {
 		this.showView('#main', 'views/home');
 	}
 });

@@ -4,6 +4,7 @@ var Boiler = require('boiler'),
 
 require('backbone.queryparams');
 require('ractive-adaptors-backbone');
+require('ractive-events-keys');
 
 Ractive.defaults.adapt.push('Backbone');
 

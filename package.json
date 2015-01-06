@@ -12,7 +12,8 @@
 			"backbone"                  : "github:jashkenas/backbone/~1",
 			"bootstrap"                 : "github:components/bootstrap/~3#js/bootstrap.js",
 			"backbone.queryparams"      : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js",
-			"ractive-adaptors-backbone" : "github:ractivejs/ractive-adaptors-backbone"
+			"ractive-adaptors-backbone" : "github:ractivejs/ractive-adaptors-backbone",
+			"ractive-events-keys"       : "github:ractivejs/ractive-events-keys/v0.1.2"
 		}
 	},
 	"scripts": {
@@ -39,7 +40,7 @@
 		"jshint-stylish"    : "^1.0.0",
 		"ractify"           : "^0.5.0",
 		"ractivate"         : "^0.2.0",
-		"ractive"           : "https://github.com/ractivejs/ractive/tarball/v0.6.1",
+		"ractive"           : "https://github.com/ractivejs/ractive/tarball/edge",
 		"run-sequence"      : "^1.0.1"
 	}
 }
