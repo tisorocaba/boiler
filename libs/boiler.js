@@ -14,8 +14,7 @@ define(function (require, exports, module) {
 		_ = require('underscore'),
 		Backbone = require('backbone'),
 		loading,
-		loadingView,
-		lastRoute;
+		loadingView;
 
 	// Cria o alias initialize
 	Ractive.prototype.onconstruct = function() {
@@ -105,13 +104,7 @@ define(function (require, exports, module) {
 		var router = new Backbone.Router({});
 
 		_(routes).each(function(callback, route) {
-			router.route(route, route, callback);
-		});
-
-		router.on('route', function(route) {
-			if(!route.match(['login|logout'])) {
-				lastRoute = route;
-			}
+			router.route(route, callback);
 		});
 
 		Backbone.history.start();
@@ -119,15 +112,6 @@ define(function (require, exports, module) {
 
 	// Insere o método showView no Backbone Router
 	Backbone.Router.prototype.showView = showView;
-
-	// Implementa o método Backbone.history.previous()
-	Backbone.history.previous = function() {
-		if(document.referrer === '') {
-			Backbone.history.navigate('/');
-		} else {
-			Backbone.history.navigate(lastRoute, true);
-		}
-	};
 
 	// Stolen from Backbone
 	function undelegateEvents() {
