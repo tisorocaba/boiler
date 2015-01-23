@@ -30,9 +30,10 @@ gulp.task('webpack', function() {
 		watch: true
 	}, function(err, stats) {
 		if(err) {
-			throw new plugins.util.PluginError("webpack", err);
+			throw new plugins.util.PluginError('[webpack]', err);
 		} else {
-			plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!'));
+			var time = (stats.endTime - stats.startTime);
+			plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!') + ' - after ' + time + ' ms' );
 		}
 	});
 });
@@ -58,7 +59,7 @@ gulp.task('webpack-build', function() {
 		}
 	}, function(err, stats) {
 		if(err) {
-			throw new plugins.util.PluginError("webpack", err);
+			throw new plugins.util.PluginError('[webpack]', err);
 		}
 	});
 });
