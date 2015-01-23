@@ -26,7 +26,7 @@ gulp.task('webpack', function() {
 				{ test: /\.ract$/, loader: 'ract' }
 			]
 		},
-		devtool: '#inline-source-map',
+		devtool: '#eval-source-map',
 		watch: true
 	}, function(err, stats) {
 		if(err) {
