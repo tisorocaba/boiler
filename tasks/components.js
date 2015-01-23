@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
 	glob = require('glob'),
-	fs = require('fs');
+	fs = require('fs-extra');
 
 gulp.task('components', function() {
 	var components = ["var Ractive = require('ractive');\n"];
@@ -11,5 +11,5 @@ gulp.task('components', function() {
 		components.push("Ractive.components['" + componentName + "'] = Ractive.extend(require('" + file + "'));");
 	});
 
-	fs.writeFileSync('temp/components.js', components.join('\n'), 'utf8');
+	fs.outputFileSync('temp/components.js', components.join('\n'));
 });

@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
 	glob = require('glob'),
-	fs = require('fs');
+	fs = require('fs-extra');
 
 gulp.task('partials', function() {
 	var partials = ["var Ractive = require('ractive');\n"];
@@ -12,5 +12,5 @@ gulp.task('partials', function() {
 		}
 	});
 
-	fs.writeFileSync('temp/partials.js', partials.join('\n'), 'utf8');
+	fs.outputFileSync('temp/partials.js', partials.join('\n'));
 });
