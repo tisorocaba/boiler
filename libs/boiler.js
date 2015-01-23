@@ -84,7 +84,7 @@ define(function (require, exports, module) {
 	// Boiler showView
 	function showView(region, view, options) {
 		if(typeof(view) === 'string') {
-			view = new (require(view))(options);
+			view = new (require('../application/' + view))(options);
 		}
 		if(typeof(view) === 'function') {
 			view = new view(options);

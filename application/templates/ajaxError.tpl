@@ -39,10 +39,11 @@
 		left       : 0;
 		height     : 100%;
 		background : #ffffff;
-		opacity    : .50;
+		opacity    : .80;
 	}
 
 	#content {
-		text-align : center
+		top: 100px;
+		text-align : center;
 	}
 </style>

@@ -22,3 +22,6 @@ require('initializer');
 
 // Registra as rotas da aplicação
 Boiler.registerRoutes(require('router'));
+
+// Logotipo do setor no rodapé
+$('.logotipo-setor').attr('src', Config.CDN_URL + '/logotipo_setor.png');

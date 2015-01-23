@@ -3,8 +3,8 @@ var gulp = require('gulp'),
 	pkg = require('../package.json');
 
 gulp.task('minify-js', function() {
-	return gulp.src(['temp/libs.js', 'temp/application.js'])
-		.pipe(plugins.concat('application.min.js'))
+	return gulp.src(['temp/application.js'])
 		.pipe(plugins.uglify())
+		.pipe(plugins.rename('application.min.js'))
 		.pipe(gulp.dest('dist/' + pkg.version + '/js'));
 });

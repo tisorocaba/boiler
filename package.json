@@ -13,33 +13,29 @@
 			"bootstrap"                 : "github:components/bootstrap/~3#js/bootstrap.js",
 			"backbone.queryparams"      : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js",
 			"ractive-adaptors-backbone" : "github:ractivejs/ractive-adaptors-backbone",
-			"ractive-events-keys"       : "github:ractivejs/ractive-events-keys/v0.1.2"
+			"ractive-events-keys"       : "github:ractivejs/ractive-events-keys"
 		}
 	},
 	"scripts": {
 		"preinstall": "npm install -g gulp volo"
 	},
 	"devDependencies": {
-		"browser-sync"      : "^1.6.3",
-		"browserify"        : "^6.2.0",
-		"del"               : "^0.1.3",
-		"glob"              : "^4.0.6",
+		"browser-sync"      : "^1.9.1",
+		"del"               : "^1.1.1",
+		"glob"              : "^4.3.5",
 		"gulp"              : "^3.8.10",
-		"gulp-concat"       : "^2.4.1",
 		"gulp-frep"         : "^0.1.3",
 		"gulp-jshint"       : "^1.9.0",
-		"gulp-load-plugins" : "^0.7.1",
-		"gulp-minify-css"   : "^0.3.11",
-		"gulp-plumber"      : "^0.6.6",
+		"gulp-load-plugins" : "^0.8.0",
+		"gulp-minify-css"   : "^0.4.2",
 		"gulp-processhtml"  : "^1.0.2",
 		"gulp-rename"       : "^1.2.0",
-		"gulp-tap"          : "^0.1.3",
-		"gulp-uglify"       : "^1.0.1",
-		"gulp-util"         : "^3.0.1",
-		"gulp-wait"         : "0.0.2",
+		"gulp-uglify"       : "^1.1.0",
+		"gulp-util"         : "^3.0.2",
 		"jshint-stylish"    : "^1.0.0",
-		"ractivate"         : "^0.2.0",
-		"ractive"           : "https://github.com/ractivejs/ractive/tarball/edge",
-		"run-sequence"      : "^1.0.1"
+		"ractive"           : "^0.6.1",
+		"ractive-loader"    : "^0.5.6",
+		"run-sequence"      : "^1.0.2",
+		"webpack"           : "^1.5.3"
 	}
 }
