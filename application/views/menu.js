@@ -1,5 +1,5 @@
-var Boiler = require('boiler');
+var Marionette = require('marionette');
 
-module.exports = Boiler.View.extend({
+module.exports = Marionette.ItemView.extend({
 	template: require('templates/menu.tpl')
 });

@@ -1,1 +1,1 @@
-<h2>Boiler</h2>
+<h3 class="text-info">Boiler</h3>

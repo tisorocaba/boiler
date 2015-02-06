@@ -1,17 +1,12 @@
 // Código a ser executado antes da inicialização da aplicação.
-var Boiler = require('boiler'),
-	Ractive = require('ractive');
+var Boiler = require('boiler');
 
 require('backbone.queryparams');
-require('ractive-adaptors-backbone');
-require('ractive-events-keys');
 
-Ractive.defaults.adapt.push('Backbone');
+// Configura a view de loading das requisições ajax
+// Boiler.setLoadingView(require('views/loading'));
 
-// Configura o template de loading das requisições ajax
-Boiler.setLoadingTemplate(require('templates/ajaxLoading.tpl'));
+// Configura a view de error das requisições ajax
+// Boiler.setErrorView(require('views/error'));
 
-// Configura o template de error das requisições ajax
-Boiler.setErrorTemplate(require('templates/ajaxError.tpl'));
-
-Boiler.showView('#menu', 'views/menu');
+Boiler.showView('#header', require('views/menu'));

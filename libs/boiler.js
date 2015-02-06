@@ -9,51 +9,11 @@ if (typeof exports === 'object' && typeof define !== 'function') {
 }
 
 define(function (require, exports, module) {
-	var Ractive = require('ractive'),
-		$ = require('jquery'),
+	var $ = require('jquery'),
 		_ = require('underscore'),
 		Backbone = require('backbone'),
 		loading,
 		loadingView;
-
-	// Cria o alias initialize
-	Ractive.prototype.onconstruct = function() {
-		if(this.initialize) {
-			this.initialize.apply(this, arguments);
-		}
-
-		setTimeout(function() {
-			delegateEvents.apply(this, arguments);
-		}.bind(this), 100);
-	};
-
-	// Cria o alias onRender
-	Ractive.prototype.onrender = function() {
-		if(this.onRender) {
-			this.onRender.apply(this, arguments);
-		}
-	};
-
-	// Cria o alias onShow
-	Ractive.prototype.oncomplete = function() {
-		if(this.onShow) {
-			this.onShow.apply(this, arguments);
-		}
-	};
-
-	// Cria o alias onClose
-	Ractive.prototype.onteardown = function() {
-		if(this.onClose) {
-			this.onClose.apply(this, arguments);
-			undelegateEvents.apply(this, arguments);
-		}
-	};
-
-	// Insere o método showView nas views Ractive
-	Ractive.prototype.showView = showView;
-
-	// Boiler View
-	var View = Ractive;
 
 	// Boiler Controller
 	var Controller = {
@@ -83,6 +43,10 @@ define(function (require, exports, module) {
 
 	// Boiler showView
 	function showView(region, view, options) {
+		options = _.extend({el: region}, options);
+
+		$(region).empty();
+
 		if(typeof(view) === 'string') {
 			view = new (require('../application/' + view))(options);
 		}
@@ -90,11 +54,7 @@ define(function (require, exports, module) {
 			view = new view(options);
 		}
 
-		if(this instanceof Ractive) {
-			view.parent = this;
-		}
-
-		view.render(region);
+		view.render();
 
 		return view;
 	}
@@ -140,47 +100,34 @@ define(function (require, exports, module) {
 	}
 
 	// Configura o template a ser renderizado no loading das requisições ajax
-	function setLoadingTemplate(template) {
+	function setLoadingView(view) {
 		$(document).ajaxStart(function() {
 			loading = setTimeout(function() {
-				loadingView = new Ractive({
-					el: 'body',
-					template: template,
-					append: true
-				});
+				loadingView = new view();
 			}, 1000);
 		});
 
 		$(document).ajaxComplete(function() {
 			clearTimeout(loading);
 			try {
-				loadingView.teardown();
+				loadingView.destroy();
 			} catch(err) {}
 		});
 	}
 
 	// Configura o template a ser renderizado no erro das requisições ajax
-	function setErrorTemplate(template) {
+	function setErrorView(view) {
 		$(document).ajaxError(function(event, error) {
 			clearTimeout(loading);
-			new Ractive({
-				el: 'body',
-				template: template,
-				append: true,
-				data: error,
-				close: function() {
-					this.teardown();
-				}
-			});
+			new view();
 		});
 	}
 
 	module.exports = {
-		View: View,
 		Controller: Controller,
 		showView: showView,
 		registerRoutes: registerRoutes,
-		setLoadingTemplate: setLoadingTemplate,
-		setErrorTemplate: setErrorTemplate
+		setLoadingView: setLoadingView,
+		setErrorView: setErrorView
 	};
 });

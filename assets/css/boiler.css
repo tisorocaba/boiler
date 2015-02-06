@@ -1,45 +1,130 @@
-html {
-	position: relative;
-	min-height: 100%;
+html, body {
+	height: 95%;
 }
 
 body {
-	margin-bottom: 54px;
-	font-family: 'Arial', 'open-sans';
+	background: #dadada;
+	margin-top: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+	font-family: 'Arial', 'sans-serif';
+	font-size: 13px;
 }
 
-body > #main {
-	padding: 50px 20px 10px 20px;
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	padding: 0;
+	background: #ffffff;
+	border: solid 1px #c4c4c4;
+	border-radius: 4px;
+	box-shadow: 0 3px 3px #777;
 }
 
-body > #menu .navbar-brand {
-	color: #ffdd4c !important;
+.header {
+	padding: 0 10px;
+	min-height: 40px;
+	margin-bottom: 0;
+	border: none;
+	border-bottom: solid 1px #e7e7e7;
+	border-radius: 4px 4px 0 0;
 }
 
-body > #menu .logotipo-prefeitura {
-	padding-left: 20px !important;
-	padding-top: 3px;
+.header .logotipo-prefeitura {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 44px;
 }
 
-body > #menu .navbar, body > #footer .navbar {
-	margin-bottom: 0 !important;
-	border-radius: 0 !important;
+.header .navbar-brand {
+	height: 45px;
+	margin-left: -10px;
+	font-size: 16px;
 }
 
-body > #footer {
+.header .navbar-brand,
+.header .navbar-brand:visited,
+.header .navbar-brand:hover,
+.header .navbar-brand:active {
+	color: #b22222;
+}
+
+.header .navbar-nav > li > a {
+	padding: 14px 10px 10px;
+}
+
+.header .dropdown-menu {
+	padding: 0;
+	font-size: 13px;
+}
+
+.header .dropdown-menu > li > a {
+	padding: 4px 10px;
+	color: #777;
+}
+
+.header .dropdown-menu > li.divider {
+	margin: 0;
+}
+
+.main {
+	padding: 10px;
+}
+
+.footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 54px;
+	min-height: 45px;
+	margin-bottom: 0;
+	border: none;
+	border-top: solid 1px #e7e7e7;
+	border-radius: 0 0 4px 4px;
+	padding: 12px 10px 0;
 	text-align: center;
-	background-color: #f5f5f5;
 }
 
-body > #footer .footer-descricao {
-	color: #ccc;
+.table-radius {
+	table-layout: fixed;
+	border-collapse: separate;
+	border: solid 1px #e7e7e7;
+	border-radius: 4px;
 }
 
-body > #footer .logotipo-setor {
-	width: 50px;
-	margin-top: 5px;
+.table-radius > thead > tr > th,
+.table-radius > tfoot > tr > td {
+	border-bottom: none;
+	background: #f8f8f8;
+	color: #808080;
+}
+
+.table-radius > thead > tr > th {
+	text-align: center;
+}
+
+.table-radius > thead > tr > th,
+.table-radius > tbody > tr > td,
+.table-radius > tfoot > tr > td {
+	padding: 6px;
+	border-left: solid 1px #e7e7e7;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.table-radius > tbody > tr > td {
+	color: #555;
+}
+
+.table-radius > thead > tr > th:first-child,
+.table-radius > tbody > tr > td:first-child {
+	border-left: none;
+}
+
+.form-control:focus {
+	box-shadow: inset 0 0 1px #777;
+	border-color: #ccc;
+}
+
+h1, h2, h3, h4 {
+	margin-top: 0;
 }

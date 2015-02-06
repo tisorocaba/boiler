@@ -1,8 +1,5 @@
-var gulp = require('gulp'),
-	runSequence = require('run-sequence');
+var gulp = require('gulp');
 
 gulp.task('watch', function() {
-	gulp.watch(['application/templates/**/_*'], ['partials']);
 	gulp.watch(['application/helpers/**/*'], ['helpers']);
-	gulp.watch(['application/components/**/*'], ['components']);
 });

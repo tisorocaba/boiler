@@ -5,15 +5,14 @@
 	"volo": {
 		"baseDir": "libs",
 		"dependencies": {
-			"../assets/css/bootstrap"   : "github:components/bootstrap/~3#css/bootstrap.css",
-			"../assets/fonts"           : "github:components/bootstrap/~3#fonts",
-			"jquery"                    : "github:components/jquery/~1",
-			"underscore"                : "github:jashkenas/underscore/~1",
-			"backbone"                  : "github:jashkenas/backbone/~1",
-			"bootstrap"                 : "github:components/bootstrap/~3#js/bootstrap.js",
-			"backbone.queryparams"      : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js",
-			"ractive-adaptors-backbone" : "github:ractivejs/ractive-adaptors-backbone",
-			"ractive-events-keys"       : "github:ractivejs/ractive-events-keys"
+			"../assets/css/bootstrap" : "github:components/bootstrap#css/bootstrap.css",
+			"../assets/fonts"         : "github:components/bootstrap#fonts",
+			"jquery"                  : "github:components/jquery/~1",
+			"underscore"              : "github:jashkenas/underscore",
+			"backbone"                : "github:jashkenas/backbone",
+			"bootstrap"               : "github:components/bootstrap#js/bootstrap.js",
+			"backbone.queryparams"    : "github:jhudson8/backbone-query-parameters#backbone.queryparams.js",
+			"marionette"              : "github:marionettejs/backbone.marionette#lib/backbone.marionette.js"
 		}
 	},
 	"scripts": {
@@ -33,9 +32,9 @@
 		"gulp-rename"       : "^1.2.0",
 		"gulp-uglify"       : "^1.1.0",
 		"gulp-util"         : "^3.0.2",
+		"handlebars"        : "^2.0.0",
+		"handlebars-loader" : "^0.1.8",
 		"jshint-stylish"    : "^1.0.0",
-		"ractive"           : "^0.6.1",
-		"ractive-loader"    : "^0.5.6",
 		"run-sequence"      : "^1.0.2",
 		"webpack"           : "^1.5.3"
 	}

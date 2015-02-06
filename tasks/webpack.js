@@ -17,13 +17,9 @@ gulp.task('webpack', function() {
 				config: path.resolve('./config.js')
 			}
 		},
-		resolveLoader: {
-			modulesDirectories: ['node_modules', 'tasks']
-		},
 		module: {
 			loaders: [
-				{ test: /\.tpl$/, loader: 'ractive' },
-				{ test: /\.ract$/, loader: 'ract' }
+				{ test: /\.tpl$/, loader: 'handlebars-loader' }
 			]
 		},
 		devtool: '#eval-source-map',
@@ -33,7 +29,12 @@ gulp.task('webpack', function() {
 			throw new plugins.util.PluginError('[webpack]', err);
 		} else {
 			var time = (stats.endTime - stats.startTime);
-			plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!') + ' - after ' + time + ' ms' );
+
+			if(stats.warnings) {
+				plugins.util.log(plugins.util.colors.yellow(stats.warnings));
+			} else {
+				plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!') + ' - after ' + time + ' ms' );
+			}
 		}
 	});
 });
@@ -53,8 +54,7 @@ gulp.task('webpack-build', function() {
 		},
 		module: {
 			loaders: [
-				{ test: /\.tpl$/, loader: 'ractive' },
-				{ test: /\.json$/, loader: 'json' }
+				{ test: /\.tpl$/, loader: 'handlebars-loader' }
 			]
 		}
 	}, function(err, stats) {

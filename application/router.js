@@ -1,3 +1,4 @@
 module.exports = {
-	'' : require('controllers/application').home
+	'*page404' : require('controllers/application').page404,
+	''         : require('controllers/application').home
 };
