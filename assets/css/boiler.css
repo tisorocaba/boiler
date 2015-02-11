@@ -2,6 +2,10 @@ html, body {
 	height: 95%;
 }
 
+body * {
+	outline: none !important;
+}
+
 body {
 	background: #dadada;
 	margin-top: 25px;
@@ -53,6 +57,17 @@ body {
 	padding: 14px 10px 10px;
 }
 
+.header .navbar-nav > li > a,
+.header .navbar-nav > li > a:visited,
+.header .navbar-nav > li > a:active {
+	color: #777;
+}
+
+.header .navbar-nav > li > a.active {
+	color: #777;
+	font-weight: bold;
+}
+
 .header .dropdown-menu {
 	padding: 0;
 	font-size: 13px;
@@ -69,6 +84,7 @@ body {
 
 .main {
 	padding: 10px;
+	margin-bottom: 40px;
 }
 
 .footer {
@@ -85,7 +101,7 @@ body {
 }
 
 .table-radius {
-	table-layout: fixed;
+	/*table-layout: fixed;*/
 	border-collapse: separate;
 	border: solid 1px #e7e7e7;
 	border-radius: 4px;
@@ -105,7 +121,6 @@ body {
 .table-radius > thead > tr > th,
 .table-radius > tbody > tr > td,
 .table-radius > tfoot > tr > td {
-	padding: 6px;
 	border-left: solid 1px #e7e7e7;
 	font-size: 12px;
 	font-weight: normal;
