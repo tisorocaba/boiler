@@ -19,7 +19,7 @@ gulp.task('webpack', function() {
 		},
 		module: {
 			loaders: [
-				{ test: /\.tpl$/, loader: 'handlebars-loader' }
+				{ test: /\.tpl$/, loader: 'handlebars-loader?rootRelative=' + path.resolve('application') + '/' }
 			]
 		},
 		devtool: '#eval-source-map',
@@ -30,11 +30,7 @@ gulp.task('webpack', function() {
 		} else {
 			var time = (stats.endTime - stats.startTime);
 
-			if(stats.warnings) {
-				plugins.util.log(plugins.util.colors.yellow(stats.warnings));
-			} else {
-				plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!') + ' - after ' + time + ' ms' );
-			}
+			plugins.util.log(plugins.util.colors.green('[webpack]', 'bundle success!') + ' - after ' + time + ' ms' );
 		}
 	});
 });
@@ -54,7 +50,7 @@ gulp.task('webpack-build', function() {
 		},
 		module: {
 			loaders: [
-				{ test: /\.tpl$/, loader: 'handlebars-loader' }
+				{ test: /\.tpl$/, loader: 'handlebars-loader?rootRelative=' + path.resolve('application') + '/' }
 			]
 		}
 	}, function(err, stats) {
