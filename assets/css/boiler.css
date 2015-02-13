@@ -143,3 +143,74 @@ body {
 h1, h2, h3, h4 {
 	margin-top: 0;
 }
+
+/* Modal */
+.modal .modal-header {
+	border-bottom: none;
+}
+
+.modal .modal-footer {
+	border-top: none;
+}
+
+.modal .modal-header,
+.modal .modal-body,
+.modal .modal-footer {
+	padding: 10px;
+}
+
+.modal-medium {
+	width: 800px;
+}
+
+.modal-big {
+	width: 80%;
+}
+
+/* Form */
+form label {
+	color: #708090;
+}
+
+/* HTML 5 Datepicker */
+input[type=date]::-webkit-clear-button,
+input[type=date]::-webkit-inner-spin-button,
+input[type=datetime-local]::-webkit-clear-button,
+input[type=datetime-local]::-webkit-inner-spin-button {
+	display: none;
+	/*-webkit-appearance: none;*/
+}
+
+input[type=date]::-ms-clear,
+input[type=datetime-local]::-ms-clear {
+	display: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=datetime-local]::-webkit-calendar-picker-indicator {
+	color: #ffffff;
+	position: relative;
+	font-family: 'Glyphicons Halflings';
+	z-index: 0;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator:before,
+input[type=datetime-local]::-webkit-calendar-picker-indicator:before {
+	content: "\e109";
+	color: #777;
+	display: block;
+	left: 8px;
+	position: absolute;
+	top: -10px;
+	z-index: 1;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator:hover,
+input[type=datetime-local]::-webkit-calendar-picker-indicator:hover {
+	background: #ffffff;
+}
+
+input[type=date].required::-webkit-calendar-picker-indicator:hover,
+input[type=datetime-local].required::-webkit-calendar-picker-indicator:hover {
+	background: #F7F7B6;
+}
