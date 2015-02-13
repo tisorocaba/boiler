@@ -9,9 +9,10 @@ if (typeof exports === 'object' && typeof define !== 'function') {
 }
 
 define(function (require, exports, module) {
-	var $ = require('jquery'),
+	var	$ = require('jquery'),
 		_ = require('underscore'),
 		Backbone = require('backbone'),
+		regionManager = new (require('marionette')).RegionManager(),
 		loading,
 		loadingView;
 
@@ -43,18 +44,19 @@ define(function (require, exports, module) {
 
 	// Boiler showView
 	function showView(region, view, options) {
-		options = _.extend({el: region}, options);
-
-		$(region).empty();
+		if(!regionManager.get(region)) {
+			regionManager.addRegion(region, region);
+		}
 
 		if(typeof(view) === 'string') {
 			view = new (require('../application/' + view))(options);
 		}
+
 		if(typeof(view) === 'function') {
 			view = new view(options);
 		}
 
-		view.render();
+		regionManager.get(region).show(view);
 
 		return view;
 	}
@@ -73,33 +75,7 @@ define(function (require, exports, module) {
 	// Insere o método showView no Backbone Router
 	Backbone.Router.prototype.showView = showView;
 
-	// Stolen from Backbone
-	function undelegateEvents() {
-		$(document).off('.delegateEvents' + this._guid);
-	}
-
-	// Stolen from Backbone
-	function delegateEvents(events) {
-		var delegateEventSplitter = /^(\S+)\s*(.*)$/;
-
-		if (!(events || (events = _.result(this, 'events')))) return this;
-
-		undelegateEvents();
-
-		for (var key in events) {
-			var method = events[key];
-			if (!_.isFunction(method)) method = this[events[key]];
-			if (!method) continue;
-
-			var match = key.match(delegateEventSplitter);
-			var eventName = match[1], selector = match[2];
-			method = _.bind(method, this);
-			eventName += '.delegateEvents' + this._guid;
-			$(document).on(eventName, selector, method);
-		}
-	}
-
-	// Configura o template a ser renderizado no loading das requisições ajax
+	// Configura a view a ser renderizada no loading das requisições ajax
 	function setLoadingView(view) {
 		$(document).ajaxStart(function() {
 			loading = setTimeout(function() {
@@ -115,7 +91,7 @@ define(function (require, exports, module) {
 		});
 	}
 
-	// Configura o template a ser renderizado no erro das requisições ajax
+	// Configura a view a ser renderizada no erro das requisições ajax
 	function setErrorView(view) {
 		$(document).ajaxError(function(event, error) {
 			clearTimeout(loading);
