@@ -1,28 +1,15 @@
-<div id="wrapper"></div>
-<div id="content">
-	<img src="assets/img/loader.gif"/>
-	<br>
-	<br>
-	<strong class="text-info">Requisição em andamento. Aguarde...</strong>
+<div class="modal" tabindex="-1">
+	<div class="modal-dialog" style="margin-top:100px;">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<br>
+				<img src="assets/img/loader.gif"/>
+				<br>
+				<br>
+				<strong class="text-info">Requisição em andamento. Aguarde...</strong>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
 </div>
-
-<style>
-	#wrapper, #content {
-		position   : absolute;
-		width      : 100%;
-		z-index    : 9999;
-	}
-
-	#wrapper {
-		top        : 0;
-		left       : 0;
-		height     : 100%;
-		background : #ffffff;
-		opacity    : .80;
-	}
-
-	#content {
-		top: 100px;
-		text-align : center;
-	}
-</style>
