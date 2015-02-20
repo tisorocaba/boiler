@@ -16,8 +16,6 @@ define(function (require, exports, module) {
 		loading,
 		loadingView;
 
-	require('bootstrap');
-
 	// Boiler Controller
 	var Controller = {
 		before: function() {},
@@ -82,7 +80,6 @@ define(function (require, exports, module) {
 		$(document).ajaxStart(function() {
 			loading = setTimeout(function() {
 				loadingView = this.showView('#main', view);
-				loadingView.$el.find('.modal').modal({backdrop: 'static'});
 			}.bind(this), 1000);
 		}.bind(this));
 
@@ -99,7 +96,6 @@ define(function (require, exports, module) {
 		$(document).ajaxError(function(event, error) {
 			clearTimeout(loading);
 			view = this.showView('#main', view);
-			view.$el.find('.modal').modal({backdrop: 'static'});
 		}.bind(this));
 	}
 

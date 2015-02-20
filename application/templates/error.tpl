@@ -17,10 +17,10 @@
 				</p>
 				<br>
 				<div class="row">
-					<div class="col-md-4 col-md-offset-2">
+					<div class="col-xs-4 col-xs-offset-2">
 						<button class="btn btn-warning btn-block" data-dismiss="modal">Voltar</button>
 					</div>
-					<div class="col-md-4">
+					<div class="col-xs-4">
 						<a href="#/" class="btn btn-primary btn-block">Página Inicial</a>
 					</div>
 				</div>

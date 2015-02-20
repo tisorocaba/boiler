@@ -6,7 +6,7 @@
 				<img src="assets/img/loader.gif"/>
 				<br>
 				<br>
-				<strong class="text-info">Requisição em andamento. Aguarde...</strong>
+				<strong class="text-info">Requisição em andamento...</strong>
 				<br>
 				<br>
 			</div>
