@@ -17,7 +17,7 @@ define(function (require, exports, module) {
 		loadingView;
 
 	// Boiler Controller
-	var Controller = {
+	var Controller = _.extend(Backbone.Router.prototype, {
 		before: function() {},
 		after: function() {},
 		showView: showView,
@@ -40,7 +40,7 @@ define(function (require, exports, module) {
 
 			return _.extend(this, methods);
 		}
-	};
+	});
 
 	// Boiler showView
 	function showView(region, view, options) {
