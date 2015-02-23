@@ -5,7 +5,7 @@
 		{{#if responseJSON}}
 			{{responseJSON.errorMessage}}
 		{{else}}
-			Ocorreu um erro na requisição. Favor tentar novamente!
+			Ocorreu um erro na requisição! Favor tentar novamente.
 		{{/if}}
 		</strong>
 	</p>
