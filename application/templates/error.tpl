@@ -10,5 +10,5 @@
 		</strong>
 	</p>
 	<button class="btn btn-warning" style="width:150px;">Voltar</button>
-	<a href="#/" class="btn btn-primary" style="width:150px;">Voltar</a>
+	<a href="#/" class="btn btn-primary" style="width:150px;">Início</a>
 </div>
