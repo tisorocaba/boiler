@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
-	glob = require('glob'),
 	webpack = require('webpack'),
 	path = require('path');
 
