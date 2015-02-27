@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
 	webpack = require('webpack'),
+	notifier = require('node-notifier'),
 	path = require('path');
 
 var webpackConfig = {
@@ -31,6 +32,17 @@ var webpackCallback = function(err, stats) {
 	if(err) {
 		throw new plugins.util.PluginError('[webpack]', err);
 	} else {
+		if(stats.hasErrors() || stats.hasWarnings()) {
+			var message = [
+				stats.compilation.errors[0].module.rawRequest,
+				stats.compilation.errors[0].error.toString()
+			].join('\n');
+
+			notifier.notify({
+				title: 'Boiler error',
+				message: message
+			});
+		}
 		plugins.util.log('[webpack]', stats.toString({colors: true, chunks: false}));
 	}
 };
