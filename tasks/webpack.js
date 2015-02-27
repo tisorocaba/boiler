@@ -33,10 +33,22 @@ var webpackCallback = function(err, stats) {
 		throw new plugins.util.PluginError('[webpack]', err);
 	} else {
 		if(stats.hasErrors() || stats.hasWarnings()) {
-			var message = [
-				stats.compilation.errors[0].module.rawRequest,
-				stats.compilation.errors[0].error.toString()
-			].join('\n');
+			try {
+				var errors;
+
+				if(stats.compilation.errors[0]) {
+					errors = stats.compilation.errors[0];
+				}
+
+				if(stats.compilation.warnings[0]) {
+					errors = stats.compilation.warnings[0];
+				}
+
+				var message = [
+					errors.module.rawRequest,
+					errors.error.toString()
+				].join('\n');
+			} catch(err) {}
 
 			notifier.notify({
 				title: 'Boiler error',
