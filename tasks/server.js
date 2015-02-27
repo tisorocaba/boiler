@@ -6,7 +6,7 @@ gulp.task('server', function() {
 		server: {
 			baseDir: './'
 		},
-		files: ['temp/application.js', 'assets/**', 'index.html'],
+		files: ['temp/application.js', 'assets/**', 'config.json', 'index.html'],
 		notify: false,
 		ghostMode: false,
 		logPrefix: 'Boiler',
