@@ -23,7 +23,7 @@ var webpackConfig = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.tpl$/, loader: 'handlebars-loader?rootRelative=' + path.resolve('application') + '/' }
+			{ test: /\.tpl$/, loader: require.resolve('./template-loader.js') }
 		]
 	}
 };
@@ -48,12 +48,12 @@ var webpackCallback = function(err, stats) {
 					errors.module.rawRequest,
 					errors.error.toString()
 				].join('\n');
-			} catch(err) {}
 
-			notifier.notify({
-				title: 'Boiler error',
-				message: message
-			});
+				notifier.notify({
+					title: 'Boiler error',
+					message: message
+				});
+			} catch(err) {}
 		}
 		plugins.util.log('[webpack]', stats.toString({colors: true, chunks: false}));
 	}

@@ -11,6 +11,9 @@ Backbone.$ = $;
 // registra os helpers
 require('helpers');
 
+// registra os partials
+require('partials');
+
 // Código a ser executado na inicialização da aplicação.
 require('initializer');
 

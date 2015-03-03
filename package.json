@@ -33,7 +33,6 @@
 		"gulp-uglify"       : "^1.1.0",
 		"gulp-util"         : "^3.0.2",
 		"handlebars"        : "^2.0.0",
-		"handlebars-loader" : "^0.1.8",
 		"jshint-stylish"    : "^1.0.0",
 		"node-notifier"     : "^4.1.2",
 		"run-sequence"      : "^1.0.2",
