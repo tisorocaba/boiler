@@ -76,10 +76,10 @@ define(function (require, exports, module) {
 	Backbone.Router.prototype.showView = showView;
 
 	// Configura a view a ser renderizada no loading das requisições ajax
-	function setLoadingView(view) {
+	function setLoadingView(view, region) {
 		$(document).ajaxStart(function() {
 			loading = setTimeout(function() {
-				loadingView = this.showView('#main', view);
+				loadingView = this.showView(region, view);
 			}.bind(this), 1000);
 		}.bind(this));
 
@@ -92,10 +92,10 @@ define(function (require, exports, module) {
 	}
 
 	// Configura a view a ser renderizada no erro das requisições ajax
-	function setErrorView(view) {
+	function setErrorView(view, region) {
 		$(document).ajaxError(function(event, error) {
 			clearTimeout(loading);
-			this.showView('#main', view);
+			this.showView(region, view, {model: new Backbone.Model(error)});
 		}.bind(this));
 	}
 

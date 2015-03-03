@@ -14,6 +14,12 @@ require('helpers');
 // registra os partials
 require('partials');
 
+// Configura a view de loading das requisições ajax
+// Boiler.setLoadingView(require('views/loading'), '#loading');
+
+// Configura a view de error das requisições ajax
+// Boiler.setErrorView(require('views/error'), '#error');
+
 // Código a ser executado na inicialização da aplicação.
 require('initializer');
 
