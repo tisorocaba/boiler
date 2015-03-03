@@ -95,7 +95,7 @@ define(function (require, exports, module) {
 	function setErrorView(view) {
 		$(document).ajaxError(function(event, error) {
 			clearTimeout(loading);
-			view = this.showView('#main', view);
+			this.showView('#main', view);
 		}.bind(this));
 	}
 
