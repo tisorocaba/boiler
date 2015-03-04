@@ -8,6 +8,7 @@ var webpackConfig = {
 	entry: ['./application/main.js'],
 	output: {
 		path: __dirname,
+		pathinfo: true,
 		filename: '../temp/application.js'
 	},
 	resolve: {
@@ -60,12 +61,14 @@ var webpackCallback = function(err, stats) {
 };
 
 gulp.task('webpack', function() {
-	webpackConfig.devtool = '#eval-source-map';
+	webpackConfig.devtool = 'eval';
 	webpackConfig.watch = true;
 
 	webpack(webpackConfig, webpackCallback);
 });
 
 gulp.task('webpack-build', function() {
+	webpackConfig.devtool = 'source-map';
+	
 	webpack(webpackConfig, webpackCallback);
 });
