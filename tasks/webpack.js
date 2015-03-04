@@ -68,7 +68,7 @@ gulp.task('webpack', function() {
 });
 
 gulp.task('webpack-build', function() {
-	webpackConfig.devtool = 'source-map';
+	webpackConfig.devtool = 'eval-source-map';
 	
 	webpack(webpackConfig, webpackCallback);
 });
