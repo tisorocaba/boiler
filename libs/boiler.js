@@ -17,40 +17,30 @@ define(function (require, exports, module) {
 		loadingView;
 
 	// Boiler Controller
-	var Controller = _.extend({
-		before: function() {},
-		after: function() {},
-		showView: showView,
-		extend: function(methods) {
-			var controller = this;
+	var Controller = function() {};
+	Controller.prototype.before = function() {};
+	Controller.prototype.after = function() {};
+	Controller.prototype.showView = showView;
+	Controller.prototype.extend = function(methods) {
 
-			_(methods).each(function(fn, fnName) {
-				if(fnName !== 'before' && fnName !== 'after') {
-					methods[fnName] = (function() {
-						return function() {
-							if(methods['before']) {
-								if(controller.before.apply(controller, [fnName, location.hash]) !== false) {
-									if(fn.apply(controller, arguments) !== false) {
-										if(methods['after']) {
-											controller.after.apply(controller, [fnName, location.hash]);
-										}
-									}
-								}
-							} else {
-								if(fn.apply(controller, arguments) !== false) {
-									if(methods['after']) {
-										controller.after.apply(controller, [fnName, location.hash]);
-									}
-								}
+		var instance = _.extend({}, Backbone.Router.prototype, Controller.prototype, this, methods);
+
+		_(methods).each(function(fn, fnName) {
+			if(fnName !== 'before' && fnName !== 'after') {
+				methods[fnName] = (function() {
+					return function() {
+						if(instance.before.apply(instance, [fnName, location.hash]) !== false) {
+							if(fn.apply(instance, arguments) !== false) {
+								instance.after.apply(instance, [fnName, location.hash]);
 							}
-						};
-					})();
-				}
-			});
+						}
+					};
+				})();
+			}
+		});
 
-			return _.extend(this, methods);
-		}
-	});
+		return _.extend({}, Backbone.Router.prototype, Controller.prototype, methods);
+	};
 
 	// Boiler showView
 	function showView(region, view, options) {
@@ -110,7 +100,7 @@ define(function (require, exports, module) {
 	}
 
 	module.exports = {
-		Controller: Controller,
+		Controller: new Controller,
 		showView: showView,
 		registerRoutes: registerRoutes,
 		setLoadingView: setLoadingView,
