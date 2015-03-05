@@ -17,7 +17,7 @@ define(function (require, exports, module) {
 		loadingView;
 
 	// Boiler Controller
-	var Controller = _.extend(Backbone.Router.prototype, {
+	var Controller = _.extend({
 		before: function() {},
 		after: function() {},
 		showView: showView,
@@ -28,9 +28,19 @@ define(function (require, exports, module) {
 				if(fnName !== 'before' && fnName !== 'after') {
 					methods[fnName] = (function() {
 						return function() {
-							if(controller.before.apply(controller, [fnName, location.hash]) !== false) {
+							if(methods['before']) {
+								if(controller.before.apply(controller, [fnName, location.hash]) !== false) {
+									if(fn.apply(controller, arguments) !== false) {
+										if(methods['after']) {
+											controller.after.apply(controller, [fnName, location.hash]);
+										}
+									}
+								}
+							} else {
 								if(fn.apply(controller, arguments) !== false) {
-									controller.after.apply(controller, [fnName, location.hash]);
+									if(methods['after']) {
+										controller.after.apply(controller, [fnName, location.hash]);
+									}
 								}
 							}
 						};
