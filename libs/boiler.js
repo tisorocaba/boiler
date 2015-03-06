@@ -100,7 +100,7 @@ define(function (require, exports, module) {
 	}
 
 	module.exports = {
-		Controller: new Controller,
+		Controller: new Controller(),
 		showView: showView,
 		registerRoutes: registerRoutes,
 		setLoadingView: setLoadingView,
