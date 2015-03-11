@@ -2,7 +2,8 @@ var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
 	webpack = require('webpack'),
 	notifier = require('node-notifier'),
-	path = require('path');
+	path = require('path'),
+	pkg = require('../package.json');
 
 var webpackConfig = {
 	entry: ['./application/main.js'],
@@ -29,7 +30,7 @@ var webpackConfig = {
 	}
 };
 
-var webpackCallback = function(err, stats) {
+var webpackCallback = function(err, stats, showLogs) {
 	if(err) {
 		throw new plugins.util.PluginError('[webpack]', err);
 	} else {
@@ -56,7 +57,10 @@ var webpackCallback = function(err, stats) {
 				});
 			} catch(err) {}
 		}
-		plugins.util.log('[webpack]', stats.toString({colors: true, chunks: false}));
+
+		if(showLogs) {
+			plugins.util.log('[webpack]', stats.toString({colors: true, chunks: false}));
+		}
 	}
 };
 
@@ -64,11 +68,34 @@ gulp.task('webpack', function() {
 	webpackConfig.devtool = 'eval';
 	webpackConfig.watch = true;
 
-	webpack(webpackConfig, webpackCallback);
+	webpack(webpackConfig, function(err, stats) {
+		webpackCallback(err, stats, true);
+	});
 });
 
-gulp.task('webpack-build', function() {
-	webpackConfig.devtool = 'eval-source-map';
-	
-	webpack(webpackConfig, webpackCallback);
+gulp.task('webpack-build', function(cb) {
+	webpackConfig.output.filename = '../dist/' + pkg.version + '/js/application.min.js';
+
+	webpackConfig.plugins = [
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			},
+			output: {
+				comments: false
+			}
+		}),
+		new webpack.BannerPlugin([
+			pkg.name + ' - ' + pkg.description,
+			'versão ' + pkg.version,
+			pkg.work,
+			'Equipe de desenvolvimento:',
+			pkg.authors.map(function(a) { return '\t\t' + a;}).join('\n')
+		].join('\n'), {entryOnly: true})
+	];
+
+	return webpack(webpackConfig, function(err, stats) {
+		webpackCallback(err, stats, false);
+		cb();
+	});
 });

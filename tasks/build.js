@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 	runSequence = require('run-sequence');
 
 gulp.task('build', function() {
-	return runSequence('jshint', 'clean', ['helpers', 'webpack-build'], ['minify-css', 'minify-js', 'copy', 'html-replace'], function(err) {
+	return runSequence('jshint', 'clean', ['minify-css', 'copy', 'html-replace'], ['helpers', 'webpack-build'], function(err) {
 		if(err) {
 			plugins.util.log(plugins.util.colors.red('########################################################################################'));
 			plugins.util.log(plugins.util.colors.red('#                                    FALHA NO BUILD :(                                 #'));

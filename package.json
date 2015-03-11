@@ -1,7 +1,10 @@
 {
 	"name": "app_name",
+	"description": "breve descrição sobre a aplicação",
 	"version": "0.0.1",
 	"private": true,
+	"work": "Prefeitura de Sorocaba - SPG - ATI - Divisão de Sistemas",
+	"authors": [],
 	"volo": {
 		"baseDir": "libs",
 		"dependencies": {
@@ -30,7 +33,6 @@
 		"gulp-minify-css"   : "^0.4.2",
 		"gulp-processhtml"  : "^1.0.2",
 		"gulp-rename"       : "^1.2.0",
-		"gulp-uglify"       : "^1.1.0",
 		"gulp-util"         : "^3.0.2",
 		"handlebars"        : "^2.0.0",
 		"jshint-stylish"    : "^1.0.0",
