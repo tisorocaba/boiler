@@ -19,6 +19,7 @@ body {
 	position: relative;
 	min-height: 100%;
 	padding: 0;
+	margin-bottom: 25px;
 	background: #ffffff;
 	border: solid 1px #c4c4c4;
 	border-radius: 4px;
