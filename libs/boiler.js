@@ -83,7 +83,7 @@ define(function (require, exports, module) {
 			}.bind(this), 1000);
 		}.bind(this));
 
-		$(document).ajaxComplete(function() {
+		$(document).ajaxStop(function() {
 			clearTimeout(loading);
 			try {
 				loadingView.destroy();
