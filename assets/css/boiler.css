@@ -1,32 +1,29 @@
-html, body {
-	height: 95%;
-}
-
 body * {
 	outline: none !important;
 }
 
+html, body, .wrapper {
+	height: 100%;
+}
+
 body {
+	padding: 25px;
 	background: #dadada;
-	margin-top: 25px;
-	margin-left: 25px;
-	margin-right: 25px;
 	font-family: 'Arial', 'sans-serif';
 	font-size: 13px;
 }
 
 .wrapper {
-	position: relative;
+	height: auto;
 	min-height: 100%;
-	padding: 0;
-	margin-bottom: 25px;
+	padding-bottom: 45px;
 	background: #ffffff;
 	border: solid 1px #c4c4c4;
 	border-radius: 4px;
 	box-shadow: 0 3px 3px #777;
 }
 
-.header {
+.header .navbar {
 	padding: 0 10px;
 	min-height: 40px;
 	margin-bottom: 0;
@@ -92,24 +89,24 @@ body {
 
 .main {
 	padding: 10px;
-	margin-bottom: 40px;
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	min-height: 45px;
-	margin-bottom: 0;
+	position: relative;
+	margin: -45px 1px 25px;
+	clear: both;
+}
+
+.footer .navbar {
 	border: none;
 	border-top: solid 1px #e7e7e7;
 	border-radius: 0 0 4px 4px;
-	padding: 12px 10px 0;
+	min-height: 45px;
 	text-align: center;
+	padding: 12px 10px 0;
 }
 
 .table-radius {
-	/*table-layout: fixed;*/
 	border-collapse: separate;
 	border: solid 1px #e7e7e7;
 	border-radius: 4px;
@@ -141,11 +138,6 @@ body {
 .table-radius > thead > tr > th:first-child,
 .table-radius > tbody > tr > td:first-child {
 	border-left: none;
-}
-
-.form-control:focus {
-	box-shadow: inset 0 0 1px #777;
-	border-color: #ccc;
 }
 
 h1, h2, h3, h4 {
@@ -186,7 +178,6 @@ input[type=date]::-webkit-inner-spin-button,
 input[type=datetime-local]::-webkit-clear-button,
 input[type=datetime-local]::-webkit-inner-spin-button {
 	display: none;
-	/*-webkit-appearance: none;*/
 }
 
 input[type=date]::-ms-clear,
