@@ -88,7 +88,8 @@ body {
 }
 
 .main {
-	padding: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .footer {
@@ -101,6 +102,7 @@ body {
 	border: none;
 	border-top: solid 1px #e7e7e7;
 	border-radius: 0 0 4px 4px;
+	margin-bottom: 0;
 	min-height: 45px;
 	text-align: center;
 	padding: 12px 10px 0;
