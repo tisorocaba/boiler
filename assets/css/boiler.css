@@ -4,6 +4,7 @@ body * {
 
 html, body, .wrapper {
 	height: 100%;
+	margin-bottom: -45px; /* hack para corrigir bug no chrome e possivelmente safari*/
 }
 
 body {
