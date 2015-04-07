@@ -1,6 +1,4 @@
-var Handlebars = require('handlebars'),
-	runtime = require('handlebars/runtime')['default'];
-	path = require('path');
+var Handlebars = require('handlebars');
 
 module.exports = function(source) {
 	this.cacheable && this.cacheable();
