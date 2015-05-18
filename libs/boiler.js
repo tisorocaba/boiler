@@ -1,5 +1,5 @@
 // Boiler
-// Versão: 1.1.0
+// Versão: 1.2.0
 // Autor: Victor Bastos
 
 if (typeof exports === 'object' && typeof define !== 'function') {
@@ -66,6 +66,11 @@ define(function (require, exports, module) {
 		var router = new Backbone.Router({});
 
 		_(routes).each(function(callback, route) {
+			if(route[0] === '/' && route[route.length - 1] === '/') {
+				route = route.slice(1).slice(0, -1);
+				route = new RegExp(route);
+			}
+
 			callback = _.isArray(callback) ? callback : [callback];
 
 			router.route(route, callback[1] || document.title, callback[0]);
