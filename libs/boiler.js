@@ -1,5 +1,5 @@
 // Boiler
-// Versão: 1.2.0
+// Versão: 1.2.1
 // Autor: Victor Bastos
 
 if (typeof exports === 'object' && typeof define !== 'function') {
@@ -44,9 +44,11 @@ define(function (require, exports, module) {
 
 	// Boiler showView
 	function showView(region, view, options) {
-		if(!regionManager.get(region)) {
-			regionManager.addRegion(region, region);
+		if(regionManager.get(region)) {
+			regionManager.removeRegion(region);
 		}
+
+		regionManager.addRegion(region, region);
 
 		if(typeof(view) === 'string') {
 			view = new (require('../application/' + view))(options);
