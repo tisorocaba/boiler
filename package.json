@@ -8,14 +8,14 @@
 	"volo": {
 		"baseDir": "libs",
 		"dependencies": {
-			"../assets/css/bootstrap" : "github:components/bootstrap/3.3.4#css/bootstrap.css",
-			"../assets/fonts"         : "github:components/bootstrap/3.3.4#fonts",
-			"jquery"                  : "github:components/jquery/1.11.2",
-			"underscore"              : "github:jashkenas/underscore/1.8.3",
-			"backbone"                : "github:jashkenas/backbone/1.1.2",
-			"bootstrap"               : "github:components/bootstrap/3.3.4#js/bootstrap.js",
-			"backbone.queryparams"    : "github:jhudson8/backbone-query-parameters/v0.4.0#backbone.queryparams.js",
-			"marionette"              : "github:marionettejs/backbone.marionette/v2.0.2#lib/backbone.marionette.js"
+			"../assets/css/bootstrap" : "github:components/bootstrap/3.3.5#css/bootstrap.min.css",
+			"../assets/fonts"         : "github:components/bootstrap/3.3.5#fonts",
+			"jquery"                  : "github:components/jquery/1.11.3#jquery.min.js",
+			"underscore"              : "github:jashkenas/underscore/1.8.3#underscore-min.js",
+			"backbone"                : "github:jashkenas/backbone/1.2.1#backbone-min.js",
+			"bootstrap"               : "github:components/bootstrap/3.3.5#js/bootstrap.min.js",
+			"backbone.queryparams"    : "github:jhudson8/backbone-query-parameters/v0.4.0#backbone.queryparams.min.js",
+			"marionette"              : "github:marionettejs/backbone.marionette/v2.4.2#lib/backbone.marionette.min.js"
 		}
 	}
 }
