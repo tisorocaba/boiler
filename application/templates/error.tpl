@@ -11,6 +11,5 @@
 		{{/if}}
 		</strong>
 	</p>
-	<button type="button" class="btn btn-warning btn-fechar" style="width:150px;">Voltar</button>
-	<a href="#/" class="btn btn-primary" style="width:150px;">Início</a>
+	<button type="button" class="btn btn-warning btn-fechar" style="width:150px;">Fechar</button>
 </div>
