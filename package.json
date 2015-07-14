@@ -15,7 +15,7 @@
 			"backbone"                : "github:jashkenas/backbone/1.1.2#backbone-min.js",
 			"bootstrap"               : "github:components/bootstrap/3.3.5#js/bootstrap.min.js",
 			"backbone.queryparams"    : "github:jhudson8/backbone-query-parameters/v0.4.0#backbone.queryparams.min.js",
-			"marionette"              : "github:marionettejs/backbone.marionette/v2.4.2#lib/backbone.marionette.min.js"
+			"marionette"              : "github:marionettejs/backbone.marionette/v2.0.2#lib/backbone.marionette.min.js"
 		}
 	}
 }
