@@ -12,6 +12,7 @@ define(function (require, exports, module) {
 	var	$ = require('jquery'),
 		_ = require('underscore'),
 		Backbone = require('backbone'),
+		Config = require('config'),
 		regionManager = new (require('marionette')).RegionManager(),
 		loading,
 		loadingView;
@@ -93,7 +94,7 @@ define(function (require, exports, module) {
 		$(document).ajaxStart(function() {
 			loading = setTimeout(function() {
 				loadingView = this.showView(region, view);
-			}.bind(this), 1000);
+			}.bind(this), Config.WAIT_BEFORE_SHOW_LOADING_VIEW || 1000);
 		}.bind(this));
 
 		$(document).ajaxStop(function() {
