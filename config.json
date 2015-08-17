@@ -1,5 +1,5 @@
 {
-	"WAIT_BEFORE_RENDER_LOADING_VIEW": 2000,
+	"WAIT_BEFORE_SHOW_LOADING_VIEW": 2000,
 	"CDN_URL": "http://servicos.sorocaba.sp.gov.br/cdn",
 	"ENV": "TESTE"
 }
