@@ -1,5 +1,5 @@
 // Boiler
-// Versão: 1.2.1
+// Versão: 1.3.6
 // Autor: Victor Bastos
 
 if (typeof exports === 'object' && typeof define !== 'function') {
